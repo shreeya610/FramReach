@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crop Disease Diagnosis</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-3 text-center">Crop Disease Diagnosis</h2>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="cropPhoto" class="form-label">Upload Crop Photo</label>
+                <input class="form-control" type="file" id="cropPhoto" name="cropPhoto" accept="image/*" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Diagnose Disease</button>
+        </form>
+        <div id="resultSection" class="mt-4" style="display: none;">
+            <h4>Diagnosis Result:</h4>
+            <p id="diseaseName"></p>
+            <h5>Solution:</h5>
+            <p id="solutionAdvice"></p>
+        </div>
+    </div>
+
+    <script>
+    document.getElementById('uploadForm').onsubmit = async function(e) {
+        e.preventDefault();
+        const fileInput = document.getElementById('cropPhoto');
+        if (!fileInput.files) return;
+        // In production, send image to backend for analysis
+        // This is a mockup for demonstration
+        document.getElementById('resultSection').style.display = "block";
+        document.getElementById('diseaseName').textContent = "Sample disease: Leaf Blight";
+        document.getElementById('solutionAdvice').textContent = "Remove infected leaves, spray recommended fungicide, maintain crop spacing.";
+    }
+    </script>
+</body>
+</html>
